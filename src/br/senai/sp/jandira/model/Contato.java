@@ -10,6 +10,7 @@ public class Contato {
         this.id = id;
     }
 
+
     public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
@@ -28,5 +29,29 @@ public class Contato {
 
     public void setFavorito(boolean favorito) {
         this.favorito = favorito;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public long getTelefone() {
+        return telefone;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public boolean isFavorito() {
+        return favorito;
     }
 }

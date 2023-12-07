@@ -30,7 +30,8 @@ public class ContatoController {
             contato.setEmail(resultSet.getString("email"));
             contato.setFoto(resultSet.getString("foto"));
             contato.setFavorito(resultSet.getBoolean("favorito"));
-            contato.setTelefone(resultSet.getLong("telefone"));
+            contato.setTelefone(resultSet.getLong(
+                    "telefone"));
 
             listContatos.add(contato);
 
@@ -47,10 +48,26 @@ public class ContatoController {
 
     }
 
-    public void deletarContato(){
+    public void deletarContato(String nome) throws SQLException {
+        Statement statement = connection.createStatement();
+        String queryDelete = "DELETE FROM contatos WHERE nome='" + nome + "'";
+
+        statement.executeUpdate(queryDelete);
+        System.out.println("Contato" + nome + "Deletado com sucesso!");
+
 
     }
-    public void cadastrarContato(){
+    public void cadastrarContato(Contato newContato) throws SQLException {
+        Statement statement = connection.createStatement();
+        String queryCadastro = "INSERT INTO contatos (id, nome, telefone" + "email, favorito, foto) values ("+ newContato.getId() + "," + newContato.getNome() + "," + newContato.getTelefone() + "," + newContato.getEmail() + "," + newContato.isFavorito() + "," + newContato.getFoto() + ")";
+
+        try {
+            statement.executeUpdate(queryCadastro);
+            System.out.println("Contato Cadastrado com Seucesso!");
+        }catch (Exception error){
+            System.out.println(error);
+        }
+
 
     }
 
